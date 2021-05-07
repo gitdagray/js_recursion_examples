@@ -47,7 +47,7 @@ const recurToTen = (num = 1) => {
 // 0, 1, 1, 2, 3, 5, 8, 13, 21, etc.
 
 // Without Recursion:
-const fibonacci = (num, array = [0, 1]) => {
+const fibonacci = (num = 2, array = [0, 1]) => {
     while (num > 2) {
         const [nextToLast, last] = array.slice(-2);
         array.push(nextToLast + last);
@@ -56,22 +56,22 @@ const fibonacci = (num, array = [0, 1]) => {
     return array;
 }
 
-//console.log(fibonacci(12));
+//console.log(fibonacci(10));
 
 // With Recursion:
-const fib = (num, array = [0, 1]) => {
-    if (num <= 2) return array;
+const fib = (num = 2, array = [0, 1]) => {
+    if (num < 2) return array.slice(0, array.length - 1);
     const [nextToLast, last] = array.slice(-2);
     return fib(num - 1, [...array, nextToLast + last]);
 }
 
-//console.log(fib(12));
+//console.log(fib(10));
 
 // What number is in the nth position of the Fibonacci Sequence?
 
 // Without Recursion:
 const fibonacciPos = (pos) => {
-    if (pos <= 1) return pos;
+    if (pos < 2) return pos;
     const seq = [0, 1];
     for (let i = 2; i <= pos; i++) {
         const [nextToLast, last] = seq.slice(-2);
